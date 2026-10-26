@@ -6,7 +6,8 @@ import {
   TransferOption, 
   VisaRequirement,
   UserProfile,
-  BookingRecord
+  BookingRecord,
+  LoyaltyReward
 } from '../types/travel';
 
 export const CURRENCY_RATES: Record<string, CurrencyRate> = {
@@ -933,6 +934,114 @@ export const VISA_REQUIREMENTS: VisaRequirement[] = [
   }
 ];
 
+export const CATALOG_LOYALTY_REWARDS: LoyaltyReward[] = [
+  {
+    id: 'rwd-lounge',
+    title: 'VIP Airport Lounge Pass',
+    category: 'lounge',
+    milesCost: 5000,
+    description: 'Complimentary access to Oasis VIP Lounge at MMIA Lagos or Skyteam Lounge at Dubai DXB with buffet dining, drinks, and WiFi.',
+    terms: 'Valid for 1 passenger at participating airport lounges. Valid for 90 days from redemption.',
+    tierRequired: 'Silver',
+    icon: 'Coffee',
+    badge: 'Popular',
+    highlightBenefit: 'Free Gourmet Buffet & Showers'
+  },
+  {
+    id: 'rwd-transfer',
+    title: 'Executive Chauffeur Airport Transfer',
+    category: 'transfer',
+    milesCost: 7500,
+    description: 'Chauffeured private ride in Mercedes-Benz E-Class or Toyota Prado in Lagos, Abuja, or Kano.',
+    terms: 'Covers up to 45km one-way airport transfer. Flight tracking and 60 minutes complimentary wait time.',
+    tierRequired: 'Silver',
+    icon: 'Car',
+    badge: 'Executive',
+    highlightBenefit: 'Private Mercedes or Prado'
+  },
+  {
+    id: 'rwd-luggage',
+    title: 'Extra 23kg Check-In Baggage Allowance',
+    category: 'luggage',
+    milesCost: 8000,
+    description: 'Additional 1 piece of 23kg checked baggage on Saudia, Air Peace, or Emirates flights booked with Elham Travels.',
+    terms: 'Must be applied at least 24 hours prior to scheduled departure. Non-refundable once issued.',
+    tierRequired: 'Silver',
+    icon: 'Briefcase',
+    highlightBenefit: '+23kg Free Allowance'
+  },
+  {
+    id: 'rwd-flight-discount',
+    title: '$100 Flight Discount Voucher',
+    category: 'flight',
+    milesCost: 10000,
+    description: 'Direct $100 (or equivalent ₦148,500) discount on any international or domestic flight booking.',
+    terms: 'No minimum booking requirement. Applied at checkout upon entering voucher code.',
+    tierRequired: 'Silver',
+    icon: 'Ticket',
+    badge: 'Best Value',
+    highlightBenefit: 'Direct $100 Fare Deduction'
+  },
+  {
+    id: 'rwd-visa-credit',
+    title: 'VIP Fast-Track Visa Advisory Credit',
+    category: 'flight',
+    milesCost: 12000,
+    description: 'Full waiver of the Elham VIP Visa Advisory fee ($150 value) for UK, US, Schengen, or Saudi Arabia.',
+    terms: 'Includes personal dossier review, cover letter drafting, and priority biometric appointment slot booking.',
+    tierRequired: 'Gold',
+    icon: 'FileCheck2',
+    highlightBenefit: '$150 Service Fee Waived'
+  },
+  {
+    id: 'rwd-yacht',
+    title: 'Private Dubai Marina Sunset Yacht Cruise',
+    category: 'umrah',
+    milesCost: 15000,
+    description: 'Exclusive 2-hour private yacht cruise for 2 along Dubai Marina & Atlantis with BBQ refreshments.',
+    terms: 'Advance reservation required 48 hours in advance. Departure from Dubai Marina Yacht Club.',
+    tierRequired: 'Gold',
+    icon: 'Compass',
+    badge: 'Luxury',
+    highlightBenefit: 'Private Yacht for 2 Persons'
+  },
+  {
+    id: 'rwd-kaaba-upgrade',
+    title: 'Kaaba View Suite Upgrade at Fairmont Makkah',
+    category: 'hotel',
+    milesCost: 18000,
+    description: 'Guaranteed complimentary upgrade from City View to Deluxe Haram/Kaaba View at Makkah Clock Royal Tower.',
+    terms: 'Subject to suite availability at check-in. Valid for stays up to 5 consecutive nights.',
+    tierRequired: 'Gold',
+    icon: 'Building2',
+    badge: 'Spiritual VIP',
+    highlightBenefit: 'Direct Kaaba Front View'
+  },
+  {
+    id: 'rwd-haramain-vip',
+    title: 'Haramain Bullet Train First-Class Upgrade',
+    category: 'umrah',
+    milesCost: 6500,
+    description: 'First Class VIP cabin upgrade on high-speed rail between Makkah and Madinah.',
+    terms: 'Includes First Class Station Lounge access with dates, Arabic coffee, and hot meal service on board.',
+    tierRequired: 'Silver',
+    icon: 'Sparkles',
+    highlightBenefit: 'First Class Lounge & Leather Seats'
+  },
+  {
+    id: 'rwd-biz-upgrade',
+    title: 'Business Class One-Way Flight Upgrade',
+    category: 'flight',
+    milesCost: 32000,
+    description: 'Upgrade your economy ticket to Business Class lie-flat seating with champagne catering.',
+    terms: 'Available on select Middle East and regional routes with confirmed economy ticket. Subject to seat availability.',
+    tierRequired: 'Platinum',
+    icon: 'Award',
+    badge: 'Exclusive',
+    highlightBenefit: 'Lie-Flat Bed & Business Lounge'
+  }
+];
+
 export const INITIAL_USER: UserProfile = {
   id: 'usr-elham-001',
   fullName: 'Alhaji Babatunde Alabi',
@@ -943,7 +1052,59 @@ export const INITIAL_USER: UserProfile = {
   loyaltyTier: 'Gold',
   frequentFlyerNo: 'ET-GLD-8821',
   passportNo: 'A10984251',
-  savedDestinations: ['Dubai, UAE', 'Makkah, Saudi Arabia', 'London, UK']
+  savedDestinations: ['Dubai, UAE', 'Makkah, Saudi Arabia', 'London, UK'],
+  redeemedVouchers: [
+    {
+      id: 'vch-101',
+      rewardId: 'rwd-lounge',
+      rewardTitle: 'VIP Airport Lounge Pass (MMIA Lagos)',
+      voucherCode: 'ELHAM-LNG-9021',
+      redeemedDate: '2026-10-15',
+      milesSpent: 5000,
+      status: 'ACTIVE',
+      expiryDate: '2027-01-15'
+    }
+  ],
+  milesHistory: [
+    {
+      id: 'tx-1',
+      description: 'Flight Booking: Lagos (LOS) ➔ Dubai (DXB) Round-Trip',
+      date: '2026-10-18',
+      miles: 2240,
+      type: 'earned',
+      bookingRef: 'ET-894210'
+    },
+    {
+      id: 'tx-2',
+      description: 'Hotel Booking: Makkah Clock Royal Tower Fairmont (4 Nights)',
+      date: '2026-10-22',
+      miles: 1360,
+      type: 'earned',
+      bookingRef: 'ET-672109'
+    },
+    {
+      id: 'tx-3',
+      description: 'Reward Redeemed: VIP Airport Lounge Pass',
+      date: '2026-10-15',
+      miles: -5000,
+      type: 'redeemed'
+    },
+    {
+      id: 'tx-4',
+      description: 'Saudia Flight: Kano (KAN) ➔ Jeddah (JED)',
+      date: '2026-09-10',
+      miles: 1850,
+      type: 'earned',
+      bookingRef: 'ET-551029'
+    },
+    {
+      id: 'tx-5',
+      description: 'Elham Royal Club Welcome Membership Bonus',
+      date: '2026-08-01',
+      miles: 24400,
+      type: 'earned'
+    }
+  ]
 };
 
 export const INITIAL_BOOKINGS: BookingRecord[] = [

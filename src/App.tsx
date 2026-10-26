@@ -409,6 +409,7 @@ export default function App() {
           currentCurrency={currentCurrency}
           onClose={() => setIsCustomerPortalOpen(false)}
           onCancelBooking={handleCancelBooking}
+          onUpdateUser={setUser}
         />
       )}
 

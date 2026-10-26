@@ -172,10 +172,10 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Account Button */}
           <button
             onClick={onOpenCustomerPortal}
-            className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-900 bg-amber-400 rounded-lg hover:bg-amber-300 transition-colors shadow-sm whitespace-nowrap shrink-0"
+            className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-900 bg-amber-400 rounded-lg hover:bg-amber-300 transition-colors shadow-sm whitespace-nowrap shrink-0 cursor-pointer"
           >
             <User className="w-3.5 h-3.5" />
-            <span>My Bookings</span>
+            <span>My Bookings & Miles</span>
           </button>
         </div>
       </div>

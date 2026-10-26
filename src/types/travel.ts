@@ -176,6 +176,39 @@ export interface VisaApplication {
   createdAt: string;
 }
 
+export interface LoyaltyReward {
+  id: string;
+  title: string;
+  category: 'flight' | 'hotel' | 'lounge' | 'luggage' | 'umrah' | 'transfer';
+  milesCost: number;
+  description: string;
+  terms: string;
+  tierRequired?: 'Silver' | 'Gold' | 'Platinum' | 'Diamond';
+  icon: string;
+  badge?: string;
+  highlightBenefit: string;
+}
+
+export interface MilesTransaction {
+  id: string;
+  description: string;
+  date: string;
+  miles: number;
+  type: 'earned' | 'redeemed';
+  bookingRef?: string;
+}
+
+export interface RedeemedVoucher {
+  id: string;
+  rewardId: string;
+  rewardTitle: string;
+  voucherCode: string;
+  redeemedDate: string;
+  milesSpent: number;
+  status: 'ACTIVE' | 'USED' | 'EXPIRED';
+  expiryDate: string;
+}
+
 export interface UserProfile {
   id: string;
   email: string;
@@ -184,7 +217,9 @@ export interface UserProfile {
   role: 'customer' | 'admin' | 'corporate_agent';
   frequentFlyerNo?: string;
   loyaltyMiles: number;
-  loyaltyTier: 'Silver' | 'Gold' | 'Platinum';
+  loyaltyTier: 'Silver' | 'Gold' | 'Platinum' | 'Diamond';
   passportNo?: string;
   savedDestinations: string[];
+  redeemedVouchers?: RedeemedVoucher[];
+  milesHistory?: MilesTransaction[];
 }
