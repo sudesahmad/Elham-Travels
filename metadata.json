@@ -1,0 +1,8 @@
+{
+  "name": "ELHAM TRAVELS - Elham International Limited",
+  "description": "AI-Powered Global Travel Booking Platform with flights, hotels, airport transfers, car rentals, Umrah & Hajj, visa assistance, secure payments, and 24/7 AI Travel Concierge.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
